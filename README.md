@@ -1,15 +1,5 @@
 # Reto Hash
 
-#### Framework for API Rest
-
-```
-I decided to use falcon because it's a micro-framework that is designed for building very
-fast micro-services. It is very flexible as it permits us to install add-ons and other
-libraries (e.g. Jinja2, SqlAlchemy, etc) easily. It encourages the REST architectural style,
-and tries to do as little as possible while remaining highly effective and its documentation
-is not so extensive and it's very understanble.
-```
-
 ### Reultado del problema
 
 **HASH**: 468484901136871
