@@ -3,7 +3,9 @@
 ### Reultado del problema
 
 **HASH**: 468484901136871
+
 **PALABRA**: perseverar
+
 **TIEMPO EMPLEADO**: 3 horas
 
 **FUCION DESCIFRADOR**:
