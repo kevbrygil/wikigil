@@ -8,7 +8,7 @@
 
 **TIEMPO EMPLEADO**: 3 horas
 
-**FUCION DESCIFRADOR**:
+**FUNCIÓN DESCIFRADOR**:
 
 ```
 function reverse(hash){
