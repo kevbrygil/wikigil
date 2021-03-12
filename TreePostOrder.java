@@ -23,11 +23,17 @@ class NodeHD{
     }
 }
 
-public class BottomViewTreePostOrder 
+public class TreePostOrder 
 {
     Node root;
+
+    public TreePostOrder() {}
+
+    public TreePostOrder(Node node){
+        root = node;
+    }
      
-    void bottomView(Node root) 
+    void bottomView() 
     {
         if (root == null)
             return;   
@@ -79,19 +85,19 @@ public class BottomViewTreePostOrder
     }
     public static void main(String[] args) 
     { 
-        BottomViewTreePostOrder tree = new BottomViewTreePostOrder();
-        tree.root = new Node(5);
-        tree.root.left = new Node(3);
-        tree.root.left.left = new Node(1);
-        tree.root.left.left.left = new Node(0);
-        tree.root.left.right = new Node(4);
-        tree.root.right = new Node(7);
-        tree.root.right.left = new Node(6);
-        tree.root.right.right = new Node(9);
-        tree.root.right.right.left = new Node(8);
+        Node root = new Node(5);
+        root.left = new Node(3);
+        root.left.left = new Node(1);
+        root.left.left.left = new Node(0);
+        root.left.right = new Node(4);
+        root.right = new Node(7);
+        root.right.left = new Node(6);
+        root.right.right = new Node(9);
+        root.right.right.left = new Node(8);
+        TreePostOrder tree = new TreePostOrder(root);
         
         System.out.println("The Bottom View of Binary Tree by Postorder is: ");
-        tree.bottomView(tree.root); 
+        tree.bottomView(); 
         System.out.println();
     } 
      

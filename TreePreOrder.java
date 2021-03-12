@@ -23,10 +23,16 @@ class NodeHD{
     }
 }
 
-public class BottomViewTreePreOrder {
+public class TreePreOrder {
     Node root;
 
-    void bottomView(Node root) {
+    public TreePreOrder() {}
+
+    public TreePreOrder(Node node){
+        root = node;
+    }
+
+    void bottomView() {
         if (root == null)
             return;
 
@@ -58,19 +64,19 @@ public class BottomViewTreePreOrder {
 
     public static void main(String[] args) {
 
-        BottomViewTreePreOrder tree = new BottomViewTreePreOrder();
-        tree.root = new Node(5);
-        tree.root.left = new Node(3);
-        tree.root.left.left = new Node(1);
-        tree.root.left.left.left = new Node(0);
-        tree.root.left.right = new Node(4);
-        tree.root.right = new Node(7);
-        tree.root.right.left = new Node(6);
-        tree.root.right.right = new Node(9);
-        tree.root.right.right.left = new Node(8);
+        Node root = new Node(5);
+        root.left = new Node(3);
+        root.left.left = new Node(1);
+        root.left.left.left = new Node(0);
+        root.left.right = new Node(4);
+        root.right = new Node(7);
+        root.right.left = new Node(6);
+        root.right.right = new Node(9);
+        root.right.right.left = new Node(8);
+        TreePreOrder tree = new TreePreOrder(root);
 
         System.out.println("The Bottom View of Binary Tree by Preorder is: ");
-        tree.bottomView(tree.root); 
+        tree.bottomView(); 
         System.out.println();
     }
 

@@ -15,32 +15,32 @@ El sistema operativo empleado fue Linux Ubuntu, aunque puede ser cualquier siste
 ya que como comentamos anteriormente, java tiene la caracteristica de ser multiplataforma.
 En este repositorio github se almacenan 3 archivos con extension .java:
 
-**BottomViewTreePreOrder.java**
-**BottomViewTreeInOrder.java**
-**BottomViewTreePostOrder.java**
+**TreePreOrder.java**
+**TreeInOrder.java**
+**TreePostOrder.java**
 
 Ambas se corren individualmente y arrojan el resultado de la vista inferior separados por el 
 tipo de recorrido del arbol binario(Inorder,Preorder y Postorder).
 Se compilaron, ejecutaron y se probaron de la siguiente manera:
 
 ```
-javac BottomViewTreePreOrder.java
-java BottomViewTreePreOrder
+javac TreePreOrder.java
+java TreePreOrder
 
 OUTPUT: The Bottom View of Binary Tree by Preorder is: 
         0 1 3 6 8 9 
 ```
 
 ```
-javac BottomViewTreeInOrder.java
-java BottomViewTreeInOrder
+javac TreeInOrder.java
+java TreeInOrder
 
 OUTPUT: The Bottom View of Binary Tree by Inorder is: 
         0 1 3 6 8 9 
 ```
 ```
-javac BottomViewTreePostOrder.java
-java BottomViewTreePostOrder
+javac TreePostOrder.java
+java TreePostOrder
 
 OUTPUT: The Bottom View of Binary Tree by Postorder is: 
         0 1 3 5 7 9 
