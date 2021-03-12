@@ -4,7 +4,7 @@
 Decidí usar Java porque es un lenguaje multiplataforma, se puede usar una sola aplicación
 que puede ser usada, ya sea Windows, Mac o Linux y no se tendría que usar licencia porque es
 Open source. Es facil de aprender gracias a herramientas de desarrollo amplios. Ademas que es
-orientado a objetos por lo que es facil crear aplicaciones modulares y reutilizar partes de
+orientado a objetos por lo que es facil de crear aplicaciones modulares y reutilizar partes de
 la misma
 ```
 
