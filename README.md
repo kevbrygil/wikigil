@@ -1,25 +1,27 @@
 # Reto Arboles Binarios
 
 ```
-Decidí usar Java porque es un lenguaje multiplataforma, se puede usar una sola aplicación
-que puede ser usada, ya sea Windows, Mac o Linux y no se tendría que usar licencia porque es
-Open source. Es facil de aprender gracias a herramientas de desarrollo amplios. Ademas que es
-orientado a objetos por lo que es facil de crear aplicaciones modulares y reutilizar partes de
-la misma
+Decidí usar Java porque es un lenguaje multiplataforma, se puede tener una sola aplicación y
+ser usada en diferentes sistemas operativos, ya sea Windows, Mac o Linux y no se tendría que 
+usar licencia porque es Open source. Es facil de aprender gracias a sus herramientas de 
+desarrollo muy amplios. Ademas que es orientado a objetos por lo que es facil de crear 
+aplicaciones modulares y reutilizar partes de la misma.
 ```
 
 ### Instalación
 
-Unicamente basta con tener instala Java SDK 11.
-En este repositorio contiene 3 archivos con extension .java:
+Tener instalado Java SDK 11.
+El sistema operativo empleado fue Linux Ubuntu, aunque puede ser cualquier sistema operativo, 
+ya que como comentamos anteriormente, java tiene la caracteristica de ser multiplataforma.
+En este repositorio github se almacenan 3 archivos con extension .java:
 
-#### BottomViewTreePreOrder.java
-#### BottomViewTreeInOrder.java
-#### BottomViewTreePostOrder.java
+**BottomViewTreePreOrder.java**
+**BottomViewTreeInOrder.java**
+**BottomViewTreePostOrder.java**
 
-Ambas se corren individualmente y arrojan el resultado de la vista inferios por el tipo de 
-recorrido en particular del arbol binario. 
-Se compilaron y ejecutaron de la siguiente manera:
+Ambas se corren individualmente y arrojan el resultado de la vista inferior separados por el 
+tipo de recorrido del arbol binario(Inorder,Preorder y Postorder).
+Se compilaron, ejecutaron y se probaron de la siguiente manera:
 
 ```
 javac BottomViewTreePreOrder.java
@@ -69,5 +71,5 @@ requiere **O (n)** de tiempo, sumando con esto, cada insercion de nuestro mapa t
 
 **Complejidad espacial:**
 Se usan colas y pilas donde se almacenan todos los nodos presentes en los niveles, por lo 
-lo cual, el espacio requerido por nuestro mapa es menor que la cola o pila usada, entonces,
+lo cual, el espacio requerido por nuestro mapa es menor que dicha cola o pila usada, entonces,
 nuestra complegidad general del espacio será **O (n)**.
