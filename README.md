@@ -62,17 +62,12 @@ Vista inferior del arbol binario: 0 1 3 5 7 9
 
 ### Análisis y solución del problema
 
-Tiempo de Complejidad: 
-Al analizar la complejidad de tiempo de nuestro enfoque, vemos que el orden de nivel 
-transversal de todos los nodos requiere O (n) tiempo. Junto con esto, cada inserción 
-en nuestro mapa toma O (log n)  tiempo. Entonces, la Complejidad de tiempo total será 
- O (n * log n) .
-
+***Tiempo de Complejidad: ***
 Al analizar la complejidad de tiempo, el orden de nivel de recorrido de todos los nodos
 requiere **O (n)** de tiempo, sumando con esto, cada insercion de nuestro mapa toma 
 **O (log n)**  tiempo, entonces, la complejidad de tiempo total es O ***(n * log n)***.
 
-Complejidad espacial:   
+***Complejidad espacial:   ****
 Se usó cola y pila donde se almacenan todos los nodos presentes en los niveles, por lo 
 tanto, el espacio requerido por nuestro mapa es menor que la cola o pila usada, entonces,
 nuestra complegidad general del espacio es **O (n)**
