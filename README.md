@@ -70,4 +70,4 @@ requiere **O (n)** de tiempo, sumando con esto, cada insercion de nuestro mapa t
 ***Complejidad espacial:   ****
 Se usó cola y pila donde se almacenan todos los nodos presentes en los niveles, por lo 
 tanto, el espacio requerido por nuestro mapa es menor que la cola o pila usada, entonces,
-nuestra complegidad general del espacio es **O (n)**
+nuestra complegidad general del espacio es **O (n)**.
