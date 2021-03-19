@@ -5,8 +5,8 @@
 **Framework for API Rest**:
 
 ```
-Se decidió usar el framework flask de Python, que es un micro-framework que nos permite crear aplicaciones de manera rapida y 
-con un mínimo número de codigo.
+Se decidió usar el framework flask de Python, que es un micro-framework que nos permite 
+crear aplicaciones de manera rapida y con un mínimo número de codigo.
 ```
 
 ### Análisis y solución del problema
