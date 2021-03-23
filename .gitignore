@@ -1,3 +1,4 @@
 *.vscode
 Prueba Python (2).pdf
 __pycache__
+.python-version

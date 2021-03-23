@@ -4,19 +4,19 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-flask-sqlalchemy = "*"
+Flask = "*"
+Flask-SQLAlchemy = "*"
 marshmallow-jsonapi = "*"
 marshmallow = "*"
 psycopg2-binary = "*"
-flask-restful = "*"
-werkzeug = "*"
-flask-bcrypt = "*"
+Flask-RESTful = "*"
+Werkzeug = "*"
+Flask-Bcrypt = "*"
 flask-redis = "*"
-flask-migrate = "*"
-flask-script = "*"
+Flask-Migrate = "*"
+Flask-Script = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.8.5"
