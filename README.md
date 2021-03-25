@@ -60,3 +60,7 @@ $ python migrate.py db upgrade
 Por falta de tiempo solo se explicara la parte de existencia del producto:
 
 Se ha creado una entidad Inventory de tabla puente de shelf específicamente para mantener tanto el recuento en el almacen/estante como el recuento en el almacén en una sola entidad. En cualquier cálculo solo estaría involucrada la entidad Inventory. El stock se reduciría y el shelfcount aumentaria.
+
+### Muestra en WEB
+
+https://github.com/kevbrygil/wikigil/blob/main/testweb.png
