@@ -63,4 +63,4 @@ Se ha creado una entidad Inventory de tabla puente de shelf específicamente par
 
 ### Muestra en WEB
 
-https://github.com/kevbrygil/wikigil/blob/main/testweb.png
+<img src="https://github.com/kevbrygil/wikigil/blob/main/testweb.png" />
