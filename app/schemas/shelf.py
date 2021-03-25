@@ -1,22 +1,25 @@
 from marshmallow_jsonapi import Schema, fields
 from marshmallow import validate
+from app.schemas.store import StoreSchema
 
-class StoreSchema(Schema):
+class ShelfSchema(Schema):
  
     not_blank = validate.Length(min=1, error='Los campos no deben estar en blanco')
 
-    id = fields.Integer(dump_only=True)   
+    id = fields.Integer(dump_only=True)
     name = fields.String(validate=not_blank)
-    address = fields.String(validate=not_blank)
+    capacity = fields.Integer()
     latitude = fields.String()
     longitude = fields.String()
 
-    # self links
+    storeid = fields.Integer()
+    store = fields.Nested(StoreSchema)
+
     def get_top_level_links(self, data, many):
         if many:
-            self_link = "/stores"
+            self_link = "/shelfs"
         else:
-            self_link = "/stores/{}".format(data['id'])
+            self_link = "/shelfs/{}".format(data['id'])
         return {'self': self_link}
     class Meta:
-        type_ = 'store'
+        type_ = 'shelf'

@@ -1,22 +1,24 @@
 from flask import Blueprint, request, jsonify, make_response
 from flask_restful import Api, Resource, reqparse, fields, marshal_with
 from app.database import db
+from app.models.shelf import Shelf
+from app.schemas.shelf import ShelfSchema
 from app.models.store import Store
 from app.schemas.store import StoreSchema
 from sqlalchemy.exc import SQLAlchemyError
 from marshmallow import ValidationError
 
-store = Blueprint('store', __name__)
+shelf = Blueprint('shelf', __name__)
  
-schema = StoreSchema()
+schema = ShelfSchema()
 
-api = Api(store)
+api = Api(shelf)
 
-class CreateListStore(Resource):
+class CreateListShelf(Resource):
     
     def get(self):
-        store_query = Store.query.all()
-        results = schema.dump(store_query, many=True)['data']
+        shelf_query = Shelf.query.all()
+        results = schema.dump(shelf_query, many=True)['data']
         return results
 
     def post(self):
@@ -25,9 +27,9 @@ class CreateListStore(Resource):
             schema.validate(raw_dict)
             request_dict = raw_dict['data']['attributes']
 
-            store = Store(request_dict['name'], request_dict['address'], request_dict['latitude'], request_dict['longitude'])
-            store.add(store)
-            query = Store.query.get(store.id)
+            shelf = Shelf(request_dict['name'], request_dict['capacity'], request_dict['latitude'], request_dict['longitude'], request_dict['storeid'])
+            shelf.add(shelf)
+            query = Shelf.query.get(shelf.id)
             results = schema.dump(query)['data']
             return results, 201
  
@@ -43,23 +45,23 @@ class CreateListStore(Resource):
             return resp
  
  
-class GetUpdateDeleteStore(Resource):
+class GetUpdateDeleteShelf(Resource):
     
     def get(self, id):
-        store_query = Store.query.get_or_404(id)
-        result = schema.dump(store_query)['data']
+        shelf_query = Shelf.query.get_or_404(id)
+        result = schema.dump(shelf_query)['data']
         return result
  
     def put(self, id):
-        store = Store.query.get_or_404(id)
+        shelf = Shelf.query.get_or_404(id)
         raw_dict = request.get_json(force=True)
         try:
             schema.validate(raw_dict)
             request_dict = raw_dict['data']['attributes']
             for key, value in request_dict.items():
-                setattr(store, key, value)
+                setattr(shelf, key, value)
  
-            store.update()
+            shelf.update()
             return self.get(id)
  
         except ValidationError as err:
@@ -74,9 +76,9 @@ class GetUpdateDeleteStore(Resource):
             return resp
  
     def delete(self, id):
-        store = Store.query.get_or_404(id)
+        shelf = Shelf.query.get_or_404(id)
         try:
-            delete = store.delete(store)
+            delete = shelf.delete(shelf)
             response = make_response()
             response.status_code = 204
             return response
@@ -87,7 +89,5 @@ class GetUpdateDeleteStore(Resource):
             resp.status_code = 401
             return resp
 
-
-#Mapear las clases para los endpoints de la API
-api.add_resource(CreateListStore, '.json')
-api.add_resource(GetUpdateDeleteStore, '/<int:id>.json')
+api.add_resource(CreateListShelf, '.json')
+api.add_resource(GetUpdateDeleteShelf, '/<int:id>.json')

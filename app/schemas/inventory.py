@@ -2,6 +2,7 @@ from marshmallow_jsonapi import Schema, fields
 from marshmallow import validate
 from app.schemas.product import ProductSchema
 from app.schemas.store import StoreSchema
+from app.schemas.shelf import ShelfSchema
 
 class InventorySchema(Schema):
  
@@ -9,12 +10,15 @@ class InventorySchema(Schema):
 
     id = fields.Integer(dump_only=True)   
     name = fields.String(validate=not_blank)
-    stockCount = fields.Integer() 
+    stock = fields.Integer() 
+    shelfcount = fields.Integer() 
     
     productid = fields.Integer()
     storeid = fields.Integer()
+    shelfid = fields.Integer()
     product = fields.Nested(ProductSchema)
     store = fields.Nested(StoreSchema)
+    shelf = fields.Nested(ShelfSchema)
 
     # self links
     def get_top_level_links(self, data, many):

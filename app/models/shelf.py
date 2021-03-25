@@ -1,18 +1,22 @@
 from app.database import db
  
-class Store(db.Model):
+class Shelf(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50),nullable = False)
-    address = db.Column(db.String(256),nullable = False)
+    capacity = db.Column(db.Integer,nullable = False)
     latitude = db.Column(db.String(100),nullable = True)
     longitude = db.Column(db.String(100),nullable = True)
+
+    storeid = db.Column(db.Integer, db.ForeignKey('store.id'))
+    store = db.relationship('Store', foreign_keys=[storeid])
     
  
-    def __init__(self,  name,  address, latitude,  longitude):
+    def __init__(self,  name,  capacity, latitude,  longitude, storeid):
         self.name = name
-        self.address = address
+        self.capacity = capacity
         self.latitude = latitude
         self.longitude = longitude
+        self.storeid = storeid
          
     def add(self, resource):
         db.session.add(resource)

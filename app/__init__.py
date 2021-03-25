@@ -26,4 +26,7 @@ def create_app(config_filename):
     from app.controllers.inventory import inventory
     app.register_blueprint(inventory, url_prefix='/api/inventoryitems')
 
+    from app.controllers.shelf import shelf
+    app.register_blueprint(shelf, url_prefix='/api/shelfs')
+
     return app

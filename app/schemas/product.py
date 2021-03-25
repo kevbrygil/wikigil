@@ -7,8 +7,9 @@ class ProductSchema(Schema):
     not_zero = validate.Length(min=1, error='Los campos no deben estar en blanco')
 
     id = fields.Integer(dump_only=True)   
+    name = fields.String(validate=not_blank)
     sku = fields.String(validate=not_blank)
-    price = fields.Decimal()
+    price = fields.Float()
     size = fields.String(validate=not_blank)
  
     # self links

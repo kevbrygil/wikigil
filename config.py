@@ -8,7 +8,7 @@ class ProductionConfig(Config):
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://aiyqnoic:7jfdAb3WNfj2sgJe0h6SWaZE4tFLrUSs@queenie.db.elephantsql.com:5432/aiyqnoic'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://eivsdjze:JE1XNgPmmeZBvhf2Aae-wKHxHuwx0620@queenie.db.elephantsql.com:5432/eivsdjze'
 
 class TestingConfig(Config):
     TESTING = True
