@@ -14,9 +14,9 @@ class StoreSchema(Schema):
     # self links
     def get_top_level_links(self, data, many):
         if many:
-            self_link = "/stores"
+            self_link = '/stores'
         else:
-            self_link = "/stores/{}".format(data['id'])
+            self_link = '/stores/{}'.format(data['id'])
         return {'self': self_link}
     class Meta:
         type_ = 'store'

@@ -14,9 +14,9 @@ $('#btn_new_product').click(function() {
                 sku: form_product.find('[name="sku"]').val(),
                 price: form_product.find('[name="price"]').val(),
                 size: form_product.find('[name="size"]').val()
-            }
-        }, 
-        type: 'product'
+            },
+            type: 'product'
+        }
     };
 
     if (data_product.data.attributes.name.length > 0 && data_product.data.attributes.sku.length > 0 && 
@@ -38,12 +38,12 @@ $('#btn_new_product').click(function() {
 
 var handleTable = function() {
     $('#table_product').dataTable({
-        'ajax': {
-            'url': '/api/products.json',
-            'type': 'GET',
-            'dataSrc': '',
+        ajax: {
+            url: '/api/products.json',
+            type: 'GET',
+            dataSrc: 'data',
         },
-        'columns': [
+        columns: [
             {data: 'id', title:'#'},
             {data: 'attributes.name', title:'Nombre'},
             {data: 'attributes.sku', title:'SKU'},
@@ -70,12 +70,12 @@ var handleTable = function() {
                 }
             }
         ],
-        'language': {
+        language: {
             url: 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'
         },
-        'pageLength': 25,
-        'lengthMenu': [10,25,50,75,100],
-        'ordering': false,
+        pageLength: 25,
+        lengthMenu: [10,25,50,75,100],
+        ordering: false,
     }).on( 'draw.dt', function () {
         $('[data-toggle="tooltip_table"]').tooltip();
         $('[id^="delete_"]').click(function(e){

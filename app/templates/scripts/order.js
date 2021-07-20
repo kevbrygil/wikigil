@@ -1,31 +1,31 @@
-var form_inventory = $('#form_inventory');
+var form_order = $('#form_order');
 
 var first_page_and_reload_table = function(){
-    $('#table_inventory').DataTable().page(0);
-    $('#table_inventory').DataTable().ajax.reload();
+    $('#table_order').DataTable().page(0);
+    $('#table_order').DataTable().ajax.reload();
 };
 
-$('#btn_new_inventory').click(function() {
-    var data_inventory = {
+$('#btn_new_order').click(function() {
+    var data_order = {
         data:{
             attributes:{
-                name: form_inventory.find('[name="name"]').val(),
-                stock: form_inventory.find('[name="stock"]').val(),
-                shelfcount: form_inventory.find('[name="shelfcount"]').val(),
-                storeid: form_inventory.find('[name="storeid"]').val(),
-                productid: form_inventory.find('[name="productid"]').val(),
-                shelfid: form_inventory.find('[name="shelfid"]').val(),
+                name: form_order.find('[name="name"]').val(),
+                stock: form_order.find('[name="stock"]').val(),
+                shelfcount: form_order.find('[name="shelfcount"]').val(),
+                storeid: form_order.find('[name="storeid"]').val(),
+                productid: form_order.find('[name="productid"]').val(),
+                shelfid: form_order.find('[name="shelfid"]').val(),
             }
         }, 
-        type: 'inventory'
+        type: 'order'
     };
 
-    if (data_inventory.data.attributes.name.length > 0 && !isNaN(data_inventory.data.attributes.stock) && 
-        data_inventory.data.attributes.storeid && data_inventory.data.attributes.productid) {
-        post_ajax_generic('/api/inventoryitems.json', data_inventory).then(function(data) {
-          toastr.success('Se agregó un nuevo inventario.');
-          $('#modal_inventory').modal('hide');
-          form_inventory[0].reset();
+    if (data_order.data.attributes.name.length > 0 && !isNaN(data_order.data.attributes.stock) && 
+        data_order.data.attributes.storeid && data_order.data.attributes.productid) {
+        post_ajax_generic('/api/orderitems.json', data_order).then(function(data) {
+          toastr.success('Se agregó una nueva orden.');
+          $('#modal_order').modal('hide');
+          form_order[0].reset();
           first_page_and_reload_table();
         }).catch(function(e) {
           toastr.error('Ocurrio un error, asegurese de introducir correctamente los datos.');
@@ -36,9 +36,9 @@ $('#btn_new_inventory').click(function() {
 });
 
 var handleTable = function() {
-    $('#table_inventory').dataTable({
+    $('#table_order').dataTable({
         'ajax': {
-            'url': '/api/inventoryitems.json',
+            'url': '/api/orderitems.json',
             'type': 'GET',
             'dataSrc': '',
         },
@@ -75,7 +75,7 @@ var handleTable = function() {
     }).on( 'draw.dt', function () {
         $('[data-toggle="tooltip_table"]').tooltip();
         $('[id^="delete_"]').click(function(e){
-            delete_ajax_generic('/api/inventoryitems/' + this.id.split('_')[1] + '.json').then(function(data_ajax) {
+            delete_ajax_generic('/api/orderitems/' + this.id.split('_')[1] + '.json').then(function(data_ajax) {
                 toastr.success('Se Eliminó el almacen correctamente.');
                 first_page_and_reload_table();
               }).catch(function(e) {
@@ -97,7 +97,7 @@ get_and_set_data_for_select2({
     text: 'name',
     placeholder: 'Tienda',
     multiple: false,
-    dropdownParent: $('#modal_inventory')
+    dropdownParent: $('#modal_order')
 }).then(function (data) { });
 
 get_and_set_data_for_select2({
@@ -107,7 +107,7 @@ get_and_set_data_for_select2({
     text: 'name',
     placeholder: 'Producto',
     multiple: false,
-    dropdownParent: $('#modal_inventory')
+    dropdownParent: $('#modal_order')
 }).then(function (data) { });
 
 get_and_set_data_for_select2({
@@ -117,5 +117,5 @@ get_and_set_data_for_select2({
     text: 'name',
     placeholder: 'Almacen',
     multiple: false,
-    dropdownParent: $('#modal_inventory')
+    dropdownParent: $('#modal_order')
 }).then(function (data) { });

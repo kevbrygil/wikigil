@@ -1,10 +1,9 @@
 from app.database import db
  
-class Inventory(db.Model):
+class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150),nullable = False)
-    stock = db.Column(db.Integer, nullable = False)
-    shelfcount = db.Column(db.Integer, nullable = False)
+    stockCount = db.Column(db.Integer, nullable = False)
     storeid = db.Column(db.Integer, db.ForeignKey('store.id'))
     productid = db.Column(db.Integer, db.ForeignKey('product.id'))
     shelfid = db.Column(db.Integer, db.ForeignKey('shelf.id'))
@@ -15,8 +14,7 @@ class Inventory(db.Model):
  
     def __init__(self,  name,  stock, shelfcount, storeid, productid, shelfid):
         self.name = name.lower()
-        self.stock = stock
-        self.shelfcount = shelfcount
+        self.stockCount = stockCount
         self.storeid = storeid
         self.productid = productid
         self.shelfid = shelfid

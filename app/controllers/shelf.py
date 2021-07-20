@@ -17,8 +17,8 @@ api = Api(shelf)
 class CreateListShelf(Resource):
     
     def get(self):
-        shelf_query = Shelf.query.all()
-        results = schema.dump(shelf_query, many=True)['data']
+        shelfQuery = Shelf.query.all()
+        results = schema.dump(shelfQuery, many=True)['data']
         return results
 
     def post(self):

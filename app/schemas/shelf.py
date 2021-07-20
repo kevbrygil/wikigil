@@ -17,9 +17,9 @@ class ShelfSchema(Schema):
 
     def get_top_level_links(self, data, many):
         if many:
-            self_link = "/shelfs"
+            self_link = '/shelfs'
         else:
-            self_link = "/shelfs/{}".format(data['id'])
+            self_link = '/shelfs/{}'.format(data['id'])
         return {'self': self_link}
     class Meta:
         type_ = 'shelf'

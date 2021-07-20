@@ -9,7 +9,7 @@
 	<meta name="generator" content="">
 	<link rel="icon" sizes="192x192" href="https://static.wixstatic.com/media/d3f31b_f38d21c17e824d44bfe6783b7f33d209%7Emv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/d3f31b_f38d21c17e824d44bfe6783b7f33d209%7Emv2.png">
 
-	<title>Inventario</title>
+	<title>Ordenes de stock</title>
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
 
@@ -75,8 +75,8 @@
 						</a>
 					</li>
 					<li class="nav-item ">
-						<a class="nav-link active" href="/inventory.html">
-							<i class="fas fa-boxes"></i> Inventario
+						<a class="nav-link active" href="/order.html">
+							<i class="fas fa-boxes"></i> Ordenes
 						</a>
 					</li>
 					<li class="nav-item">
@@ -99,28 +99,28 @@
 	<main class="container-fluid pt-4">
 		<div class="row">
 			<div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 border border-2 border-dark">
-				<div class="h3 m-2">Listado de Inventarios
+				<div class="h3 m-2">Listado de Ordenes
 					<a data-bs-toggle="modal" class="btn btn-primary rounded-0" id="btn_user"
-						data-bs-target="#modal_inventory">Agregar Inventario</a>
+						data-bs-target="#modal_order">Agregar Orden</a>
 				</div>
-				<p class="m-2"> En este apartado se muestran los inventarios de las tiendas de <strong>Cargamos</strong>.
-					Oprime el botón de <strong>"Agregar Inventario"</strong> para adicionar un nuevo almacen. </p>
+				<p class="m-2"> En este apartado se muestran las ordenes stock de las tiendas de <strong>Cargamos</strong>.
+					Oprime el botón de <strong>"Agregar Orden"</strong> para adicionar un nuevo almacen. </p>
 			</div>
 		</div>
 		<div class="row mt-4">
 			<div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 px-0 table-responsive">
-				<table id="table_inventory" class="table table-dark table-striped table-bordered">
+				<table id="table_order" class="table table-dark table-striped table-bordered">
 				</table>
 			</div>
 		</div>
-		<div class="modal fade text-left" id="modal_inventory" tabindex="-1" role="dialog" aria-labelledby="modal_title"
+		<div class="modal fade text-left" id="modal_order" tabindex="-1" role="dialog" aria-labelledby="modal_title"
 			aria-hidden="true">
 			<div class="modal-dialog" role="document" style="max-width: 750px;">
 				<div class="modal-content">
-					<form id="form_inventory">
+					<form id="form_order">
 						<div class="modal-header bg-light">
 							<h5 class="modal-title " id="modal_title">
-								Nuevo Inventario
+								Nueva Orden
 							</h5>
 							<button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
@@ -160,7 +160,7 @@
 							<a class="btn btn-secondary rounded-0" data-bs-dismiss="modal">
 								Cancelar
 							</a>
-							<button type="button" class="btn btn-primary rounded-0" id="btn_new_inventory">
+							<button type="button" class="btn btn-primary rounded-0" id="btn_new_order">
 								Guardar
 							</button>
 						</div>
@@ -193,7 +193,7 @@
 		crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script src="scripts/main.js"> </script>
-	<script src="scripts/inventory.js"> </script>
+	<script src="scripts/order.js"> </script>
 
 </body>
 

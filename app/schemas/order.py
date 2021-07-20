@@ -4,7 +4,7 @@ from app.schemas.product import ProductSchema
 from app.schemas.store import StoreSchema
 from app.schemas.shelf import ShelfSchema
 
-class InventorySchema(Schema):
+class OrderSchema(Schema):
  
     not_blank = validate.Length(min=1, error='Los campos no deben estar en blanco')
 
@@ -23,9 +23,9 @@ class InventorySchema(Schema):
     # self links
     def get_top_level_links(self, data, many):
         if many:
-            self_link = "/inventoryitems"
+            self_link = '/orderitems'
         else:
-            self_link = "/inventoryitems/{}".format(data['id'])
+            self_link = '/orderitems/{}'.format(data['id'])
         return {'self': self_link}
     class Meta:
-        type_ = 'inventory'
+        type_ = 'order'

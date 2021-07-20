@@ -15,20 +15,22 @@ api = Api(product)
 class CreateListProduct(Resource):
     
     def get(self):
-        product_query = Product.query.all()
-        results = schema.dump(product_query, many=True)['data']
+        productQuery = Product.query.all()
+        results = schema.dump(productQuery, many=True)
         return results
 
     def post(self):
-        raw_dict = request.get_json(force=True)
+        requestProduct = request.get_json(force=True)
         try:
-            schema.validate(raw_dict)
-            request_dict = raw_dict['data']['attributes']
+            schema.validate(requestProduct)
+            productDict = schema.load(requestProduct)
 
-            product = Product(request_dict['name'], request_dict['sku'], request_dict['price'], request_dict['size'])
+            product = Product(productDict['name'],
+                                productDict['sku'],
+                                productDict['price'],
+                                productDict['size'])
             product.add(product)
-            query = Product.query.get(product.id)
-            results = schema.dump(query)['data']
+            results = schema.dump(product)
             return results, 201
  
         except ValidationError as err:
@@ -44,19 +46,19 @@ class CreateListProduct(Resource):
  
  
 class GetUpdateDeleteProduct(Resource):
-    
+
     def get(self, id):
-        product_query = Product.query.get_or_404(id)
-        result = schema.dump(product_query)['data']
+        productQuery = Product.query.get_or_404(id)
+        result = schema.dump(productQuery)
         return result
  
     def put(self, id):
         product = Product.query.get_or_404(id)
-        raw_dict = request.get_json(force=True)
+        requestProduct = request.get_json(force=True)
         try:
-            schema.validate(raw_dict)
-            request_dict = raw_dict['data']['attributes']
-            for key, value in request_dict.items():
+            schema.validate(requestProduct)
+            productDict = schema.load(requestProduct)
+            for key, value in productDict.items():
                 setattr(product, key, value)
  
             product.update()

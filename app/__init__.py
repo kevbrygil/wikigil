@@ -23,8 +23,8 @@ def create_app(config_filename):
     from app.controllers.product import product
     app.register_blueprint(product, url_prefix='/api/products')
     
-    from app.controllers.inventory import inventory
-    app.register_blueprint(inventory, url_prefix='/api/inventoryitems')
+    from app.controllers.order import order
+    app.register_blueprint(order, url_prefix='/api/orderitems')
 
     from app.controllers.shelf import shelf
     app.register_blueprint(shelf, url_prefix='/api/shelfs')

@@ -15,9 +15,9 @@ class ProductSchema(Schema):
     # self links
     def get_top_level_links(self, data, many):
         if many:
-            self_link = "/products"
+            self_link = '/products'
         else:
-            self_link = "/products/{}".format(data['id'])
+            self_link = '/products/{}'.format(data['id'])
         return {'self': self_link}
     class Meta:
         type_ = 'product'
