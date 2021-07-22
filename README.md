@@ -57,9 +57,25 @@ $ python migrate.py db upgrade
 
 ### Análisis y solución del problema
 
-Por falta de tiempo solo se explicara la parte de existencia del producto:
+## Modelos
 
-Se ha creado una entidad Inventory de tabla puente de shelf específicamente para mantener tanto el recuento en el almacen. En cualquier cálculo solo estaría involucrada la entidad Inventory. Por lo tanto el stock se reduciría y el shelfcount aumentaria.
+Shelf: Una unidad de muebles del edificio. Los productos se encuentran en un estante.
+
+|Propiedad | Tipo esperado | Descripción |
+| --- | --- | --- |
+| buildingID | FK: Buildind | El edificio en el que se encuentra el estante. |
+capacity | integer | La cantidad máxima de artículos que puede contener el estante. |
+name | String | Nombre del estante. |
+product	Relación: Producto	El producto que se encuentra actualmente en la estantería
+items	Propiedad: entero	La cantidad de artículos del producto que se encuentran actualmente en el estante
+persona	Relación: Persona	La persona que instaló el estante
+status	Boolean	El estado de la instalación de la estantería (p pending. Ej . in progress, completed)
+latitud	String	La ubicación del estante
+
+| Comando | Descripción |
+| --- | --- |
+| git status | Enumera todos los archivos nuevos o modificados |
+| git diff | Muestra las diferencias de archivo que no han sido preparadas |
 
 ### Muestra en WEB
 

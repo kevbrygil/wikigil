@@ -1,9 +1,11 @@
+import datetime
 from app.database import db
  
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150),nullable = False)
     stockCount = db.Column(db.Integer, nullable = False)
+    orderDate = db.Column(db.DateTime, default = datetime.datetime.now)
     storeid = db.Column(db.Integer, db.ForeignKey('store.id'))
     productid = db.Column(db.Integer, db.ForeignKey('product.id'))
     shelfid = db.Column(db.Integer, db.ForeignKey('shelf.id'))
@@ -12,7 +14,7 @@ class Order(db.Model):
     product = db.relationship('Product', foreign_keys=[productid])
     shelf = db.relationship('Shelf', foreign_keys=[shelfid])
  
-    def __init__(self,  name,  stock, shelfcount, storeid, productid, shelfid):
+    def __init__(self,  name,  stockCount, storeid, productid, shelfid):
         self.name = name.lower()
         self.stockCount = stockCount
         self.storeid = storeid
