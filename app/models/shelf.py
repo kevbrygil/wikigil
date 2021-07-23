@@ -7,9 +7,7 @@ class Shelf(db.Model):
     capacity = db.Column(db.Integer,nullable = False)
     latitude = db.Column(db.String(100),nullable = True)
     longitude = db.Column(db.String(100),nullable = True)
-
-    storeid = db.Column(db.Integer, db.ForeignKey('store.id'))
-    store = db.relationship('Store', foreign_keys=[storeid])
+    buildingId = db.Column(db.Integer, db.ForeignKey('buildings.id'), ondelete = 'CASCADE')
     building = db.relationship('Building', back_populates = 'shelves')
  
     def __init__(self,  name,  capacity, latitude,  longitude, storeid):
