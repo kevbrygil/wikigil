@@ -9,12 +9,8 @@ class Building(db.Model):
     latitude = db.Column(db.String(100),nullable = True)
     longitude = db.Column(db.String(100),nullable = True)
     category = db.Column(db.String(100), nullable = False)
-    #shelfId = db.Column(db.Integer, db.ForeignKey('shelf.id'), ondelete = 'CASCADE')
-    shelves = db.relationship('Shelf', 
-                            back_populates='building',
-                            cascade="all, delete-orphan",
-                            lazy=True)
- 
+    shelves = db.relationship('Shelf', backref='building', lazy=True, cascade="all, delete-orphan", passive_deletes=True)
+
     def __init__(self,  name,  address, latitude,  longitude, category, shelfId):
         self.name = name
         self.address = address
