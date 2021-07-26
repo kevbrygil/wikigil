@@ -72,6 +72,29 @@ $ python migrate.py db upgrade
 | latitude | String | Latitud del estante |
 | longitude | String | Longitud del estante |
 
+### Shelf: Una unidad de muebles del edificio. Los productos se encuentran en un estante.
+
+|Propiedad | Tipo esperado | Descripción |
+| --- | --- | --- |
+| buildingId | FK: Buildind | El edificio en el que se encuentra el estante. |
+| productId | FK: Product | El producto que se encuentra actualmente en la estantería |
+| employeeId | FK: Employee | El personal que instaló el estante
+| name | String | Nombre del estante |
+| maxCapacity | Integer | La cantidad máxima de artículos que puede contener el estante |
+| availablesItems | Integer | La cantidad de artículos del producto que se encuentran actualmente en el estante |
+| latitude | String | Latitud del estante |
+| longitude | String | Longitud del estante |
+
+### Order : una entrada en una lista de artículos vendidos en una o más tiendas
+
+|Propiedad | Tipo esperado | Descripción |
+| --- | --- | --- |
+|productId | FK: Product | El producto asociado a este artículo de stock |
+|buildingId | FK: Building | La identificación de la tienda por la que se vende este producto |
+|employeeId | FK: Employee | El empleado que creó la orden |
+|orderDate | DateTime | La fecha en que se realizó el pedido |
+|stockCount | Integer | El número de artículos que quedan en stock en el almacén |
+|name | String | Descripcion de la orden |
 
 ### Muestra en WEB
 
