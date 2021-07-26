@@ -1,5 +1,11 @@
-from app.database import db, orm
+from app.database import db
+from enum import IntEnum
 
+class BuildingCategory(IntEnum):
+    WAREHOUSE = 1
+    CHAIN = 2
+    SUPERMARKET = 3
+    HYPERMARKET = 4
  
 class Building(db.Model):
     __tablename__ = 'buildings'
@@ -8,16 +14,16 @@ class Building(db.Model):
     address = db.Column(db.String(256),nullable = False)
     latitude = db.Column(db.String(100),nullable = True)
     longitude = db.Column(db.String(100),nullable = True)
-    category = db.Column(db.String(100), nullable = False)
-    shelves = db.relationship('Shelf', backref='building', lazy=True, cascade="all, delete-orphan", passive_deletes=True)
+    category = db.Column(db.Enum(BuildingCategory), nullable = False)
+    shelves = db.relationship('Shelf', back_populates='building', lazy=True, cascade="all, delete-orphan", passive_deletes=True)
+    orders = db.relationship('Order', back_populates='building', lazy=True, cascade="all, delete-orphan", passive_deletes=True)
 
-    def __init__(self,  name,  address, latitude,  longitude, category, shelfId):
+    def __init__(self,  name,  address, latitude,  longitude, category):
         self.name = name
         self.address = address
         self.latitude = latitude
         self.longitude = longitude
         self.category = category
-        self.shelfId = shelfId
 
     def add(self, resource):
         db.session.add(resource)

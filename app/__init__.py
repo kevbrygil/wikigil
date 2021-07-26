@@ -17,16 +17,16 @@ def create_app(config_filename):
     def index():
         return render_template('index.html')
     
-    from app.controllers.store import store
-    app.register_blueprint(store, url_prefix='/api/stores')
+    from app.resources.shelf import shelf
+    from app.resources.building import building
+    from app.resources.product import product
+    from app.resources.employee import employee
+    from app.resources.order import order
 
-    from app.controllers.product import product
+    app.register_blueprint(shelf, url_prefix='/api/shelves')
+    app.register_blueprint(building, url_prefix='/api/buildings')
     app.register_blueprint(product, url_prefix='/api/products')
-    
-    from app.controllers.order import order
-    app.register_blueprint(order, url_prefix='/api/orderitems')
-
-    from app.controllers.shelf import shelf
-    app.register_blueprint(shelf, url_prefix='/api/shelfs')
+    app.register_blueprint(employee, url_prefix='/api/employees')
+    app.register_blueprint(order, url_prefix='/api/orders')
 
     return app

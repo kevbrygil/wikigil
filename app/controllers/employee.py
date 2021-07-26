@@ -1,32 +1,32 @@
 from flask import request, jsonify, make_response
 from flask_restful import Resource
 from app.database import db
-from app.models.product import Product
-from app.schemas.product import ProductSchema
+from app.models.employee import Employee
+from app.schemas.employee import EmployeeSchema
 from sqlalchemy.exc import SQLAlchemyError
 from marshmallow import ValidationError
 
-schema = ProductSchema()
+schema = EmployeeSchema()
 
-class ListProducts(Resource):
+class ListEmployees(Resource):
     def get(self):
-        productQuery = Product.query.all()
-        results = schema.dump(productQuery, many=True)
+        employeeQuery = Employee.query.all()
+        results = schema.dump(employeeQuery, many=True)
         return results
 
-class CreateProduct(Resource):
+class CreateEmployee(Resource):
     def post(self):
-        requestProduct = request.get_json(force=True)
+        requestEmployee = request.get_json(force=True)
         try:
-            schema.validate(requestProduct)
-            productDict = schema.load(requestProduct)
+            schema.validate(requestEmployee)
+            employeeDict = schema.load(requestEmployee)
 
-            product = Product(productDict['name'],
-                                productDict['sku'],
-                                productDict['price'],
-                                productDict['size'])
-            product.add(product)
-            results = schema.dump(product)
+            employee = Employee(employeeDict['name'],
+                                employeeDict['sku'],
+                                employeeDict['price'],
+                                employeeDict['size'])
+            employee.add(employee)
+            results = schema.dump(employee)
             return results, 201
  
         except ValidationError as err:
@@ -40,23 +40,23 @@ class CreateProduct(Resource):
             resp.status_code = 403
             return resp
 
-class GetProductById(Resource):
+class GetEmployeeById(Resource):
     def get(self, id):
-        productQuery = Product.query.get_or_404(id)
-        result = schema.dump(productQuery)
+        employeeQuery = Employee.query.get_or_404(id)
+        result = schema.dump(employeeQuery)
         return result
 
-class UpdateProductById(Resource):
+class UpdateEmployeeById(Resource):
     def put(self, id):
-        product = Product.query.get_or_404(id)
-        requestProduct = request.get_json(force=True)
+        employee = Employee.query.get_or_404(id)
+        requestEmployee = request.get_json(force=True)
         try:
-            schema.validate(requestProduct)
-            productDict = schema.load(requestProduct)
-            for key, value in productDict.items():
-                setattr(product, key, value)
+            schema.validate(requestEmployee)
+            employeeDict = schema.load(requestEmployee)
+            for key, value in employeeDict.items():
+                setattr(employee, key, value)
  
-            product.update()
+            employee.update()
             return self.get(id)
  
         except ValidationError as err:
@@ -70,11 +70,11 @@ class UpdateProductById(Resource):
             resp.status_code = 401
             return resp
 
-class DeleteProductById(Resource):
+class DeleteEmployeeById(Resource):
     def delete(self, id):
-        product = Product.query.get_or_404(id)
+        employee = Employee.query.get_or_404(id)
         try:
-            delete = product.delete(product)
+            employee.delete(employee)
             response = make_response()
             response.status_code = 204
             return response

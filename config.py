@@ -1,14 +1,16 @@
 class Config(object):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
-    ENV = 'development'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    DEBUG = True
+    TESTING = True
 
 class ProductionConfig(Config):
     ENV = 'production'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://nnuxljcw:g9LFwxO9dsMN5SpdKTyEsVOC53G77nTO@chunee.db.elephantsql.com/nnuxljcw'
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://eivsdjze:JE1XNgPmmeZBvhf2Aae-wKHxHuwx0620@queenie.db.elephantsql.com:5432/eivsdjze'
+    ENV = 'development'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://nnuxljcw:g9LFwxO9dsMN5SpdKTyEsVOC53G77nTO@chunee.db.elephantsql.com/nnuxljcw'
 
 class TestingConfig(Config):
     TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'

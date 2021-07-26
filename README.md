@@ -59,23 +59,19 @@ $ python migrate.py db upgrade
 
 ## Modelos
 
-Shelf: Una unidad de muebles del edificio. Los productos se encuentran en un estante.
+### Shelf: Una unidad de muebles del edificio. Los productos se encuentran en un estante.
 
 |Propiedad | Tipo esperado | Descripción |
 | --- | --- | --- |
-| buildingID | FK: Buildind | El edificio en el que se encuentra el estante. |
-capacity | integer | La cantidad máxima de artículos que puede contener el estante. |
-name | String | Nombre del estante. |
-product	Relación: Producto	El producto que se encuentra actualmente en la estantería
-items	Propiedad: entero	La cantidad de artículos del producto que se encuentran actualmente en el estante
-persona	Relación: Persona	La persona que instaló el estante
-status	Boolean	El estado de la instalación de la estantería (p pending. Ej . in progress, completed)
-latitud	String	La ubicación del estante
+| buildingId | FK: Buildind | El edificio en el que se encuentra el estante. |
+| productId | FK: Product | El producto que se encuentra actualmente en la estantería |
+| employeeId | FK: Employee | El personal que instaló el estante
+| name | String | Nombre del estante |
+| maxCapacity | Integer | La cantidad máxima de artículos que puede contener el estante |
+| availablesItems | Integer | La cantidad de artículos del producto que se encuentran actualmente en el estante |
+| latitude | String | Latitud del estante |
+| longitude | String | Longitud del estante |
 
-| Comando | Descripción |
-| --- | --- |
-| git status | Enumera todos los archivos nuevos o modificados |
-| git diff | Muestra las diferencias de archivo que no han sido preparadas |
 
 ### Muestra en WEB
 

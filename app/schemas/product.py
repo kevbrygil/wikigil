@@ -1,16 +1,30 @@
 from marshmallow_jsonapi import Schema, fields
 from marshmallow import validate
 
+
 class ProductSchema(Schema):
- 
-    not_blank = validate.Length(min=1, error='Los campos no deben estar en blanco')
-    not_zero = validate.Length(min=1, error='Los campos no deben estar en blanco')
 
     id = fields.Integer(dump_only=True)   
-    name = fields.String(validate=not_blank)
-    sku = fields.String(validate=not_blank)
-    price = fields.Float()
-    size = fields.String(validate=not_blank)
+    name = fields.String(required=True,
+                        error_messages={'required': 'El nombre es requerido'},
+                        validate=validate.Length(min=1, error='El nombre no debe estar en blanco'))
+
+    sku = fields.String(required=True,
+                        error_messages={'required': 'El SKU es requerido'},
+                        validate=validate.Length(min=1, error='El SKU no debe estar en blanco'))
+
+    price = fields.Float(required=True,
+                        error_messages={'required': 'El precio es requerido'},
+                        validate=validate.Length(min=1, error='El precio no debe estar en blanco'))
+
+    size = fields.String(required=True,
+                        error_messages={'required': 'El tamaño es requerido'},
+                        validate=validate.Length(min=1, error='El tamaño no debe estar en blanco'))
+
+    orders = fields.Nested('OrderSchema', many=True, dump_only=True, exclude=('product', ))
+
+    shelves = fields.Nested('ShelfSchema', many=True, dump_only=True, exclude=('product', ))
+
  
     # self links
     def get_top_level_links(self, data, many):

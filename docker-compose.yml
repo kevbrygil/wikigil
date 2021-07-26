@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  base:
+    build: .
+    volumes:
+      - .:/code
+    command: 'false'
+
+  web:
+    extends:
+      service: base
+    command: python run.py
+    links:
+      - "db"
+    ports:
+      - "8001:8001"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:10
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=app
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
+
+  migrations:
+    extends:
+      service: base
+    command: python migrate.py db init && python migrate.py db migrate
+    depends_on:
+      - db

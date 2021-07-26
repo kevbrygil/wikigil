@@ -1,0 +1,9 @@
+FROM python:3.8.10
+
+RUN pip3 install pipenv
+RUN pip3 install uwsgi
+WORKDIR /code
+COPY Pipfile Pipfile.lock ./
+RUN pipenv install --system --deploy --ignore-pipfile
+COPY . .
+CMD [ "uwsgi","app.ini" ]

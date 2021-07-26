@@ -1,11 +1,14 @@
 from app.database import db
  
 class Product(db.Model):
+    __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable = False)
     sku = db.Column(db.String(100), unique=True, nullable = False)
     price = db.Column(db.Float, nullable = False)
     size = db.Column(db.String(100), nullable = False)
+    shelves = db.relationship('Shelf', back_populates='product', lazy=True)
+    orders = db.relationship('Order', back_populates='product', lazy=True)
  
     def __init__(self, name, sku, price, size):
         self.name = name
